@@ -244,29 +244,7 @@ export default function RootLayout({
           ],
         },
 
-         { kind: "divider" },
-        { kind: "header", title: "HRM" },
-        {
-          segment: "hrm",
-          title: "HRM",
-          icon: (
-            <EngineeringIcon onClick={() => setSelectedPage("employee")} />
-          ),
-          children: [
-           
-            {
-              segment: "attendence",
-              title: "Attendance",
-              icon: (
-                <VisibilityIcon
-                  onClick={() => setSelectedPage("hrm/attendence")}
-                />
-              ),
-            },
-          
-           
-          ],
-        },
+      
       ]
     : [
         { kind: "header", title: "Main items" },
@@ -302,53 +280,7 @@ export default function RootLayout({
           ],
         },
 
-         { kind: "divider" },
-        { kind: "header", title: "HRM" },
-        {
-          segment: "hrm",
-          title: "HRM",
-          icon: (
-            <EngineeringIcon onClick={() => setSelectedPage("employee")} />
-          ),
-          children: [
-            {
-              segment: "employee",
-              title: "Employees",
-              icon: (
-                <VisibilityIcon
-                  onClick={() => setSelectedPage("hrm/employee")}
-                />
-              ),
-            },
-            {
-              segment: "attendence",
-              title: "Attendance",
-              icon: (
-                <VisibilityIcon
-                  onClick={() => setSelectedPage("hrm/attendence")}
-                />
-              ),
-            },
-            {
-              segment: "payroll",
-              title: "Payroll",
-              icon: (
-                <VisibilityIcon
-                  onClick={() => setSelectedPage("hrm/payroll")}
-                />
-              ),
-            },
-            {
-              segment: "dilivery",
-              title: "Delivery",
-              icon: (
-                <VisibilityIcon
-                  onClick={() => setSelectedPage("hrm/dilivery")}
-                />
-              ),
-            },
-          ],
-        },
+       
 
           { kind: "divider" },
         { kind: "header", title: "Analytics" },
