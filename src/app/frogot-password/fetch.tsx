@@ -3,7 +3,7 @@ export async function fetchDataJson<T>(
   options: RequestInit = {}
 ): Promise<T> {
   try {
-    const newUrl = "https://apivtwo.iymart.jp/api/" + url;
+    const newUrl = "https://apiwholesale.iymart.jp/api/" + url;
     const token = localStorage.getItem("user-token");
     console.log("Sending Token:", token);
 

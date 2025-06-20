@@ -188,7 +188,7 @@ export default function RootLayout({
   const fetchPendingOrderCount = async () => {
     try {
       const response = await fetch(
-        `https://apivtwo.iymart.jp/api/admin/orders?order_number=&order_status=pending&user_email=`,
+        `https://apiwholesale.iymart.jp/api/admin/orders?order_number=&order_status=pending&user_email=`,
         {
           method: "GET",
           headers: {
