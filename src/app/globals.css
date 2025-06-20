@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.primary {
+  color: #53B175;
+} 
+
+.secondary {
+  color: #F2994A;
+}
+
+.bg-primary {
+  background-color: #53B175;
+}
+.bg-secondary {
+  background-color: #F2994A;
+}

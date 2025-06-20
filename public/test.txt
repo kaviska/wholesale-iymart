@@ -1,0 +1,186 @@
+{
+    "userData": {
+        "region_id": 1,
+        "prefecture_id": 1,
+        "city": "Tokyo",
+        "postal_code": "124-4567",
+        "address_line_1": "12345677",
+        "address_line_2": "Apt 4B",
+        "name": "Walk In Customer",
+        "email": "walkincystomer@gmail.com",
+        "mobile": "0711388634",
+        "device_name": "ZTE v50",
+        "user_id": 3
+    },
+    "paymentData": {
+        "method": "cash_on_delivery",
+        "due_date": "2030-04-04 15:49:06"
+    },
+    "type": "pos",
+    "discount": 0,
+    "tax_amount": 0,
+    "shipping_cost": 0,
+    "cart_items": [
+        {
+            "stock_id": 1,
+            "quantity": 3
+        }
+    ]
+}
+
+
+
+
+
+{
+    "userData": {
+        "region_id": 4,
+        "prefecture_id": 15,
+        "city": "gampaha",
+        "postal_code": "1000000",
+        "address_line_1": "14 Green Second Street",
+        "address_line_2": "Doloribus mollit cor",
+        "name": "Walk In Customer",
+        "email": "walkincustomer@gmail.com",
+        "mobile": "0987654321",
+        "device_name": "ZTE v50",
+        "user_id": 2
+    },
+    "paymentData": {
+        "method": "cash_on_delivery",
+        "due_date": "2030-04-04 15:49:06"
+    },
+    "type": "pos",
+    "discount": 0,
+    "tax_amount": 0,
+    "shipping_cost": 0,
+    "cart_items": [
+        {
+            "stock_id": 1,
+            "quantity": 1
+        }
+    ]
+}
+
+
+
+[
+    {
+        "id": 1,
+        "name": "Finn Nicholson",
+        "slug": "Non aut exercitation",
+        "barcode": null,
+        "web_availability": null,
+        "description": "Et dolor est iusto e",
+        "primary_image": "storage/images/products/Non aut exercitation.jpg",
+        "category_id": 1,
+        "brand_id": 1,
+        "category": {
+            "id": 1,
+            "name": "Sample Category",
+            "slug": "sample",
+            "image": "storage/images/categories/sample.jpg"
+        },
+        "brand": {
+            "id": 1,
+            "name": "Samson Burns"
+        },
+        "taxonomies": [],
+        "stocks": [
+            {
+                "id": 1,
+                "product_id": 1,
+                "quantity": 683,
+                "web_price": 976,
+                "pos_price": 612,
+                "web_discount": 20,
+                "pos_discount": 62,
+                "cost": 78,
+                "alert_quantity": 940,
+                "purchase_date": "2012-06-21",
+                "barcode": "Obcaecati minim corp",
+                "supplier_id": 1,
+                "reserved_quantity": 0,
+                "created_at": "2025-04-20T05:28:51.000000Z",
+                "updated_at": "2025-04-20T05:30:48.000000Z",
+                "variation_stocks": [
+                    {
+                        "id": 1,
+                        "stock_id": 1,
+                        "variation_option_id": 5,
+                        "variation_option": {
+                            "id": 5,
+                            "variation_id": 1,
+                            "name": "1kg",
+                            "variation": {
+                                "id": 1,
+                                "name": "Weight"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
+
+
+[
+    {
+        "id": 1,
+        "name": "Nipuna Samba",
+        "slug": "Samba-Nipuna",
+        "barcode": null,
+        "web_availability": null,
+        "description": "No",
+        "primary_image": "storage/images/products/Samba-Nipuna.jpg",
+        "category_id": 1,
+        "brand_id": 1,
+        "category": {
+            "id": 1,
+            "name": "Rice",
+            "slug": "Rice",
+            "image": "storage/images/categories/Rice.jpg"
+        },
+        "brand": {
+            "id": 1,
+            "name": "Nipuna"
+        },
+        "taxonomies": [],
+        "stocks": [
+            {
+                "id": 1,
+                "product_id": 1,
+                "quantity": 29,
+                "web_price": 3500,
+                "pos_price": 3000,
+                "web_discount": 0,
+                "pos_discount": 0,
+                "cost": 2500,
+                "alert_quantity": 10,
+                "purchase_date": "2025-04-20",
+                "barcode": "8902761142161",
+                "supplier_id": 1,
+                "reserved_quantity": 20,
+                "created_at": "2025-04-20T04:56:49.000000Z",
+                "updated_at": "2025-04-20T05:03:01.000000Z",
+                "variation_stocks": [
+                    {
+                        "id": 1,
+                        "stock_id": 1,
+                        "variation_option_id": 5,
+                        "variation_option": {
+                            "id": 5,
+                            "variation_id": 1,
+                            "name": "1kg",
+                            "variation": {
+                                "id": 1,
+                                "name": "Weight"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
