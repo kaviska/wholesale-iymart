@@ -70,28 +70,7 @@ export default function List() {
         </div>
       ),
     },
-    {
-      name: "Image",
-       style: {
-    maxWidth: "150px", // Set your desired max width
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-      cell: (row: Product) => (
-        <img
-          src={
-            (process.env.NEXT_PUBLIC_IMAGE_BASE || "") +
-            (row.primary_image ?? "") +
-            `?t=${new Date().getTime()}` // Add a timestamp to bust the cache
-          }
-          alt={row.name}
-          width={64}
-          height={64}
-           className="w-16 h-16 object-cover rounded"
-        />
-      ),
-    },
+  
     {
       name: "Name",
        style: {
@@ -103,27 +82,7 @@ export default function List() {
       selector: (row: Product) => row.name,
       sortable: true,
     },
-    {
-      name: "Slug",
-       style: {
-    maxWidth: "150px", // Set your desired max width
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-      selector: (row: Product) => row.slug,
-      sortable: true,
-    },
-    {
-      name: "Description",
-       style: {
-    maxWidth: "400px", // Set your desired max width now
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-      selector: (row: Product) => row.description,
-    },
+   
     {
       name: "Category",
        style: {
