@@ -404,6 +404,11 @@ export default function Add() {
         handleCloseAddModal={handleCloseVariationModal}
         onAddSuccess={handleVariationAddSuccess}
       />
-      <VariationOptionAdd
+    <VariationOptionAdd
         variationOptionModelOpen={variationOptionModelOpen}
         handleCloseAddModal={handleCloseVariationOptionModal}
+        onAddSuccess={handleVariationOptionAddSuccess}
+      />
+    </div>
+  );
+}
