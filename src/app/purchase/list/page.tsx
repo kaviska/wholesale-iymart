@@ -94,19 +94,7 @@ export default function List() {
         </div>
       ),
     },
-    {
-      name: "Image",
-      cell: (row: Purchase) =>
-        row.product && row.product.primary_image ? (
-          <img
-            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE}${row.product.primary_image}`}
-            alt={row.product?.name || "Product Image"}
-            className="w-16 h-16 object-cover rounded"
-          />
-        ) : (
-          <span>N/A</span>
-        ),
-    },
+   
     {
       name: "Product Name",
       selector: (row: Purchase) => row.product?.name || "N/A",
@@ -117,26 +105,13 @@ export default function List() {
       selector: (row: Purchase) => row.quantity?.toString() || "N/A",
       sortable: true,
     },
-    {
-      name: "Web Price",
-      selector: (row: Purchase) => `¥${row.web_price?.toFixed(2) || "0.00"}`,
-      sortable: true,
-    },
+   
     {
       name: "POS Price",
       selector: (row: Purchase) => `¥${row.pos_price?.toFixed(2) || "0.00"}`,
       sortable: true,
     },
-    {
-      name: "Web Discount",
-      selector: (row: Purchase) => `${row.web_discount || "0"}`,
-      sortable: true,
-    },
-    {
-      name: "POS Discount",
-      selector: (row: Purchase) => `${row.pos_discount || "0"}`,
-      sortable: true,
-    },
+   
     {
       name: "Variation Option",
       selector: (row: Purchase) =>
@@ -147,21 +122,7 @@ export default function List() {
           : "N/A",
       sortable: true,
     },
-    {
-      name: "Cost",
-      selector: (row: Purchase) => `¥${row.cost?.toFixed(2) || "0.00"}`,
-      sortable: true,
-    },
-    {
-      name: "Alert Quantity",
-      selector: (row: Purchase) => row.alert_quantity?.toString() || "N/A",
-      sortable: true,
-    },
-    {
-      name: "Purchase Date",
-      selector: (row: Purchase) => row.purchase_date || "N/A",
-      sortable: true,
-    },
+   
     {
       name: "Barcode",
       selector: (row: Purchase) => row.barcode || "N/A",
