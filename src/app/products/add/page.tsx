@@ -1,45 +1,35 @@
 "use client";
 import Title from "@/components/main/Title";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ToastMessage from "@/components/dashboard/ToastMessage";
 import FormGenerator from "@/components/main/FormGenerator";
 import { AlertColor } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
-import BrandAdd from "@/components/AddModels/BrandAdd"; // Import Brand Add modal
-import CategoryAdd from "@/components/AddModels/CategoryAdd"; // Import Category Add modal
+import BrandAdd from "@/components/AddModels/BrandAdd";
+import CategoryAdd from "@/components/AddModels/CategoryAdd";
 import AddIcon from "@mui/icons-material/Add";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 interface FormData {
   name: string;
-  slug: string;
-  description: string;
   category_id: string;
   brand_id: string;
-  primary_image: File | null;
-  type: string;
-  web_availability: string;
 }
 
-// Function to generate slug
-const generateSlug = (name: string): string => {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric characters with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
-};
+function randomString(length = 12) {
+  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return result;
+}
 
 export default function Add() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    slug: "",
-    description: "",
     category_id: "",
     brand_id: "",
-    type: "variant",
-    primary_image: null,
-    web_availability: "true",
   });
 
   const [toast, setToast] = useState<{
@@ -52,14 +42,14 @@ export default function Add() {
     severity: "success",
   });
 
-  const [brandModelOpen, setBrandModelOpen] = useState(false); // State for Brand Add modal
-  const [categoryModelOpen, setCategoryModelOpen] = useState(false); // State for Category Add modal
+  const [brandModelOpen, setBrandModelOpen] = useState(false);
+  const [categoryModelOpen, setCategoryModelOpen] = useState(false);
 
-  const handleAddBrandClick = () => setBrandModelOpen(true); // Open Brand Add modal
-  const handleAddCategoryClick = () => setCategoryModelOpen(true); // Open Category Add modal
+  const handleAddBrandClick = () => setBrandModelOpen(true);
+  const handleAddCategoryClick = () => setCategoryModelOpen(true);
 
-  const handleCloseBrandModal = () => setBrandModelOpen(false); // Close Brand Add modal
-  const handleCloseCategoryModal = () => setCategoryModelOpen(false); // Close Category Add modal
+  const handleCloseBrandModal = () => setBrandModelOpen(false);
+  const handleCloseCategoryModal = () => setCategoryModelOpen(false);
 
   const handleBrandAddSuccess = () => {
     setBrandModelOpen(false);
@@ -81,15 +71,9 @@ export default function Add() {
     window.location.reload();
   };
 
+  // Only include name, category_id, brand_id in input fields
   const inputFields = [
     { name: "name", label: "Product Name", type: "text", field: "text" },
-    { name: "slug", label: "Product Slug", type: "text", field: "text" },
-    {
-      name: "description",
-      label: "Description",
-      type: "text",
-      field: "textArea",
-    },
     {
       name: "category_id",
       label: "Category ID",
@@ -104,12 +88,6 @@ export default function Add() {
       filed: "Selector",
       endPoint: "brands?limit=100000",
     },
-    {
-      name: "primary_image",
-      label: "Primary Image",
-      type: "file",
-      field: "file",
-    },
   ];
 
   const handleChange = (
@@ -123,24 +101,8 @@ export default function Add() {
       | HTMLInputElement
       | HTMLSelectElement
       | HTMLTextAreaElement;
-    if (
-      e.target instanceof HTMLInputElement &&
-      e.target.type === "file" &&
-      e.target.files
-    ) {
-      setFormData({ ...formData, [name]: e.target.files[0] }); // Set the selected file
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData({ ...formData, [name]: value });
   };
-
-  // Automatically generate slug when the product name changes
-  useEffect(() => {
-    if (formData.name) {
-      const slug = generateSlug(formData.name);
-      setFormData((prev) => ({ ...prev, slug }));
-    }
-  }, [formData.name]);
 
   const handleSubmit = async () => {
     try {
@@ -152,8 +114,6 @@ export default function Add() {
 
       if (
         !formData.name ||
-        !formData.slug ||
-        !formData.description ||
         !formData.category_id ||
         !formData.brand_id
       ) {
@@ -167,15 +127,12 @@ export default function Add() {
 
       const formDataToSend = new FormData();
       formDataToSend.append("name", formData.name);
-      formDataToSend.append("slug", formData.slug);
-      formDataToSend.append("description", formData.description);
+      formDataToSend.append("slug", randomString(10));
+      formDataToSend.append("description", randomString(20));
       formDataToSend.append("category_id", formData.category_id);
       formDataToSend.append("brand_id", formData.brand_id);
-      formDataToSend.append("type", formData.type);
-      formDataToSend.append("web_availability", formData.web_availability);
-      if (formData.primary_image) {
-        formDataToSend.append("primary_image", formData.primary_image);
-      }
+      formDataToSend.append("type", "variant");
+      formDataToSend.append("web_availability", "true");
 
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/products`,
@@ -198,13 +155,8 @@ export default function Add() {
         });
         setFormData({
           name: "",
-          slug: "",
-          description: "",
           category_id: "",
           brand_id: "",
-          primary_image: null,
-          type: "fixed",
-          web_availability: "true",
         });
       } else {
         const errorData = await response.json();
@@ -234,8 +186,6 @@ export default function Add() {
 
       if (
         !formData.name ||
-        !formData.slug ||
-        !formData.description ||
         !formData.category_id ||
         !formData.brand_id
       ) {
@@ -249,15 +199,12 @@ export default function Add() {
 
       const formDataToSend = new FormData();
       formDataToSend.append("name", formData.name);
-      formDataToSend.append("slug", formData.slug);
-      formDataToSend.append("description", formData.description);
+      formDataToSend.append("slug", randomString(10));
+      formDataToSend.append("description", randomString(20));
       formDataToSend.append("category_id", formData.category_id);
       formDataToSend.append("brand_id", formData.brand_id);
-      formDataToSend.append("type", formData.type);
-      formDataToSend.append("web_availability", formData.web_availability);
-      if (formData.primary_image) {
-        formDataToSend.append("primary_image", formData.primary_image);
-      }
+      formDataToSend.append("type", "variant");
+      formDataToSend.append("web_availability", "true");
 
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/products`,
@@ -294,13 +241,8 @@ export default function Add() {
 
         setFormData({
           name: "",
-          slug: "",
-          description: "",
           category_id: "",
           brand_id: "",
-          primary_image: null,
-          type: "variant",
-          web_availability: "true",
         });
       } else {
         const errorData = await response.json();
@@ -359,43 +301,6 @@ export default function Add() {
               endPoint={field.endPoint}
             />
           ))}
-
-          <FormControl>
-            {/* add new selctor call type add two type as variant and fixed default fixed */}
-            <InputLabel id="type-label">Type</InputLabel>
-            <Select
-              labelId="type-label"
-              id="type-select"
-              value={formData.type || ""}
-              name="type"
-              label="Type"
-              onChange={handleChange}
-              sx={{ minWidth: 120, height: 50, fontSize: 14 }}
-            >
-              <MenuItem value="variant">variant</MenuItem>
-
-              <MenuItem value="fixed">Fixed(For item Which has kg)</MenuItem>
-            </Select>
-          </FormControl>
-
-          <FormControl>
-            {/* add new selctor call type add two type as variant and fixed default fixed */}
-            <InputLabel id="web_availability-label">
-              Web Availability
-            </InputLabel>
-            <Select
-              labelId="web_availability-label"
-              id="web_availability-select"
-              value={formData.web_availability || ""}
-              name="web_availability"
-              label="Web Availability"
-              onChange={handleChange}
-              sx={{ minWidth: 120, height: 50, fontSize: 14 }}
-            >
-              <MenuItem value="true">True</MenuItem>
-              <MenuItem value="false">False</MenuItem>
-            </Select>
-          </FormControl>
         </div>
         <div className="mt-5 flex gap-3">
           <button
@@ -425,7 +330,7 @@ export default function Add() {
         onAddSuccess={handleCategoryAddSuccess}
       />
 
-      <ToastMessage
+       <ToastMessage
         open={toast.open}
         onClose={() => setToast({ ...toast, open: false })}
         message={toast.message}
