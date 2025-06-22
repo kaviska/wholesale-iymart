@@ -33,9 +33,6 @@ export default function List() {
     {
       name: "Actions",
        style: {
-    maxWidth: "150px", // Set your desired max width
-    whiteSpace: "nowrap",
-    overflow: "hidden",
     textOverflow: "ellipsis",
   },
       cell: (row: Product) => (
@@ -74,9 +71,6 @@ export default function List() {
     {
       name: "Name",
        style: {
-    maxWidth: "150px", // Set your desired max width
-    whiteSpace: "nowrap",
-    overflow: "hidden",
     textOverflow: "ellipsis",
   },
       selector: (row: Product) => row.name,
@@ -86,9 +80,6 @@ export default function List() {
     {
       name: "Category",
        style: {
-    maxWidth: "150px", // Set your desired max width
-    whiteSpace: "nowrap",
-    overflow: "hidden",
     textOverflow: "ellipsis",
   },
       selector: (row: Product) => row.category?.name?.toString() || "N/A",
@@ -96,9 +87,6 @@ export default function List() {
     {
       name: "Brand",
        style: {
-    maxWidth: "150px", // Set your desired max width
-    whiteSpace: "nowrap",
-    overflow: "hidden",
     textOverflow: "ellipsis",
   },
       selector: (row: Product) => row.brand?.name?.toString() || "N/A",
